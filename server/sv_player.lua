@@ -17,7 +17,6 @@ NewPlayer = function(source, charid, dbdata)
     self.ganggrade = dbdata.ganggrade
     self.pobox = dbdata.pobox
     self.jailed = dbdata.jailed
-    self.mdt_photo = dbdata.mdt_photo
 
     self.metadata = json.decode(dbdata.metadata)
     if self.metadata == nil then self.metadata = {} end
@@ -146,7 +145,6 @@ NewPlayer = function(source, charid, dbdata)
     self.GetPermissions = function() return 0 end -- Deprecated function
     self.GetIdentifier = function(i) return self.identifier end
     self.GetGroup = function() return self.group end
-    self.GetPhoto = function() return self.mdt_photo end
     
     self.set = function(k, v)
         self[k] = v
@@ -174,7 +172,6 @@ NewPlayer = function(source, charid, dbdata)
         PlayerData.pobox = self.pobox
         PlayerData.jailed = self.jailed
         PlayerData.metadata = self.metadata
-        PlayerData.mdt_photo = self.mdt_photo
 
         Player(self.source).state.isLoggedIn = true
         Player(self.source).state.citizenid = self.citizenid
@@ -191,7 +188,6 @@ NewPlayer = function(source, charid, dbdata)
         Player(self.source).state.pobox = self.pobox
         Player(self.source).state.jailed = self.jailed
         Player(self.source).state.metadata = self.metadata
-        Player(self.source).state.mdt_photo = self.mdt_photo
     
         TriggerClientEvent("redemrp:receivePlayerData", self.source, PlayerData)
     end

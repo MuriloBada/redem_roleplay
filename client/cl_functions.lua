@@ -89,7 +89,7 @@ RedEM.Functions.NotifyLeft = function(title, text, texture_dict, texture_name, d
 end
 
 RedEM.Functions.NotifyRight = function(text, duration)
-    TriggerEvent("redem_roleplay:NotifyRight", text, duration)
+    TriggerEvent("redem_roleplay:ShowSimpleRightText", text, duration)
 end
 
 RedEM.Functions.GetTownNameAtCoords = function(coords)

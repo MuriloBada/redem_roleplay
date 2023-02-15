@@ -174,7 +174,7 @@ RedEM.DB.UpdatePlayer = function(Player)
 end
 
 RedEM.DB.GetPlayerPermissionGroup = function(identifier)
-    local users = MySQL.query.await('SELECT * FROM permissions WHERE `identifier` = ?', { identifier })
+    local users = MySQL.query.await('SELECT * FROM permissions WHERE identifier = ?', { identifier })
     if users[1] then
         return users[1].permissiongroup
     else

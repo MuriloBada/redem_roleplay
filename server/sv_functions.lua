@@ -70,5 +70,5 @@ RedEM.Functions.NotifyLeft = function(source, title, text, texture_dict, texture
 end
 
 RedEM.Functions.NotifyRight = function(source, text, duration)
-    TriggerClientEvent("redem_roleplay:NotifyRight", source, text, duration)
+    TriggerClientEvent("redem_roleplay:ShowSimpleRightText", source, text, duration)
 end
