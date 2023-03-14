@@ -19,10 +19,12 @@ NewPlayer = function(source, charid, dbdata)
     self.jailed = dbdata.jailed
 
     self.metadata = json.decode(dbdata.metadata)
-    if self.metadata == nil then self.metadata = {} end
-    if not self.metadata.thirst then self.metadata.thirst = 100 end
-    if not self.metadata.hunger then self.metadata.hunger = 100 end
-    if not self.metadata.stress then self.metadata.stress = 0 end
+    if self.metadata == nil then
+        self.metadata = {}
+    end
+    -- if not self.metadata.thirst then self.metadata.thirst = 100 end desabilitado devido ao nxt_studio_hud
+    -- if not self.metadata.hunger then self.metadata.hunger = 100 end
+    -- if not self.metadata.stress then self.metadata.stress = 0 end
 
     if not self.citizenid then
         self.citizenid = RedEM.Functions.CreateCitizenId()
@@ -78,7 +80,7 @@ NewPlayer = function(source, charid, dbdata)
 
     self.SetMoney = function(m)
         self.money = m
-        TriggerClientEvent("redem:activateMoney", self.source, self.money)
+        TriggerClientEvent('redem:activateMoney', self.source, self.money)
         self.SendPlayerDataToClient()
     end
 
@@ -87,8 +89,8 @@ NewPlayer = function(source, charid, dbdata)
 
         self.money = newMoney
 
-        TriggerClientEvent("redem:addMoney", self.source, m)
-        TriggerClientEvent("redem:activateMoney", self.source, self.money)
+        TriggerClientEvent('redem:addMoney', self.source, m)
+        TriggerClientEvent('redem:activateMoney', self.source, self.money)
         self.SendPlayerDataToClient()
     end
 
@@ -97,8 +99,8 @@ NewPlayer = function(source, charid, dbdata)
 
         self.money = newMoney
 
-        TriggerClientEvent("redem:removeMoney", self.source, m)
-        TriggerClientEvent("redem:activateMoney", self.source, self.money)
+        TriggerClientEvent('redem:removeMoney', self.source, m)
+        TriggerClientEvent('redem:activateMoney', self.source, self.money)
         self.SendPlayerDataToClient()
     end
 
@@ -118,34 +120,73 @@ NewPlayer = function(source, charid, dbdata)
         self.bankmoney = newMoney
         self.SendPlayerDataToClient()
     end
-    
 
     self.SetMetaData = function(key, value)
         self.metadata[key] = value
         self.SendPlayerDataToClient()
     end
 
-    self.CitizenId = function() return self.citizenid end
-    self.GetMetaData = function() return self.metadata end
-    self.GetMoney = function() return self.money end
-    self.GetBankMoney = function() return self.bankmoney end
-    self.GetName = function() return self.firstname .. " " .. self.lastname end
-    self.GetFirstName = function() return self.firstname end
-    self.GetLastName = function() return self.lastname end
-    self.GetJob = function() return self.job end
-    self.GetJobGrade = function() return self.jobgrade end
-    self.GetGang = function() return self.gang end
-    self.GetGangGrade = function() return self.ganggrade end
-    self.GetPOBox = function() return self.pobox end
-    self.GetJailTime = function() return self.jailed end
-    self.SetSessionVar = function(key, value) self[key] = value end
-    self.GetSessionVar = function(k) return self[k] end
-    self.GetActiveCharacter = function() return self.charid end
-    self.SetActiveCharacter = function(charid) self.charid = charid end
-    self.GetPermissions = function() return 0 end -- Deprecated function
-    self.GetIdentifier = function(i) return self.identifier end
-    self.GetGroup = function() return self.group end
-    
+    self.CitizenId = function()
+        return self.citizenid
+    end
+    self.GetMetaData = function()
+        return self.metadata
+    end
+    self.GetMoney = function()
+        return self.money
+    end
+    self.GetBankMoney = function()
+        return self.bankmoney
+    end
+    self.GetName = function()
+        return self.firstname .. ' ' .. self.lastname
+    end
+    self.GetFirstName = function()
+        return self.firstname
+    end
+    self.GetLastName = function()
+        return self.lastname
+    end
+    self.GetJob = function()
+        return self.job
+    end
+    self.GetJobGrade = function()
+        return self.jobgrade
+    end
+    self.GetGang = function()
+        return self.gang
+    end
+    self.GetGangGrade = function()
+        return self.ganggrade
+    end
+    self.GetPOBox = function()
+        return self.pobox
+    end
+    self.GetJailTime = function()
+        return self.jailed
+    end
+    self.SetSessionVar = function(key, value)
+        self[key] = value
+    end
+    self.GetSessionVar = function(k)
+        return self[k]
+    end
+    self.GetActiveCharacter = function()
+        return self.charid
+    end
+    self.SetActiveCharacter = function(charid)
+        self.charid = charid
+    end
+    self.GetPermissions = function()
+        return 0
+    end -- Deprecated function
+    self.GetIdentifier = function(i)
+        return self.identifier
+    end
+    self.GetGroup = function()
+        return self.group
+    end
+
     self.set = function(k, v)
         self[k] = v
         self.SendPlayerDataToClient()
@@ -164,7 +205,7 @@ NewPlayer = function(source, charid, dbdata)
         PlayerData.group = self.group
         PlayerData.firstname = self.firstname
         PlayerData.lastname = self.lastname
-        PlayerData.charname = ("%s %s"):format(self.firstname, self.lastname)
+        PlayerData.charname = ('%s %s'):format(self.firstname, self.lastname)
         PlayerData.job = self.job
         PlayerData.jobgrade = self.jobgrade
         PlayerData.gang = self.job
@@ -180,7 +221,7 @@ NewPlayer = function(source, charid, dbdata)
         Player(self.source).state.group = self.group
         Player(self.source).state.firstname = self.firstname
         Player(self.source).state.lastname = self.lastname
-        Player(self.source).state.charname = ("%s %s"):format(self.firstname, self.lastname)
+        Player(self.source).state.charname = ('%s %s'):format(self.firstname, self.lastname)
         Player(self.source).state.job = self.job
         Player(self.source).state.jobgrade = self.jobgrade
         Player(self.source).state.gang = self.gang
@@ -188,8 +229,8 @@ NewPlayer = function(source, charid, dbdata)
         Player(self.source).state.pobox = self.pobox
         Player(self.source).state.jailed = self.jailed
         Player(self.source).state.metadata = self.metadata
-    
-        TriggerClientEvent("redemrp:receivePlayerData", self.source, PlayerData)
+
+        TriggerClientEvent('redemrp:receivePlayerData', self.source, PlayerData)
     end
 
     self.SendPlayerDataToClient()
@@ -225,9 +266,15 @@ NewPlayer = function(source, charid, dbdata)
     self.getGroup = self.GetGroup -- Deprecated function name
     self.setGlobal = self.SetGlobal -- Deprecated function name
 
-    self.getGold = function() return 0 end -- Deprecated function
-    self.getXp = function() return 0 end -- Deprecated function
-    self.getLevel = function() return 0 end -- Deprecated function
+    self.getGold = function()
+        return 0
+    end -- Deprecated function
+    self.getXp = function()
+        return 0
+    end -- Deprecated function
+    self.getLevel = function()
+        return 0
+    end -- Deprecated function
 
     return self
 end
