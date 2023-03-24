@@ -17,11 +17,13 @@ RegisterCommand("hud", function(source, args, rawCommand) -- Its showing/hiding 
     if (hidehud ~= false) then
         hidehud = false
         TriggerEvent("redemrp:showHUD")
+        TriggerEvent("hud:client:Logged", true, "open")
         DisplayHud(true)
     else
         hidehud = true
         DisplayHud(false)
         TriggerEvent("redemrp:hideHUD")
+        TriggerEvent("hud:client:Logged", false, "close")
     end
 end, false)	
     
