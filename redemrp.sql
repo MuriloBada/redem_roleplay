@@ -14,6 +14,7 @@ CREATE TABLE `characters` (
   `coords` varchar(200) COLLATE utf8mb4_bin DEFAULT '{}',
   `pobox` int(11) NOT NULL,
   `jailed` int(11) NOT NULL DEFAULT 0,
+  `excluded` int NOT NULL DEFAULT 0,
   `metadata` varchar(512) COLLATE utf8mb4_bin NOT NULL DEFAULT '''[]'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
