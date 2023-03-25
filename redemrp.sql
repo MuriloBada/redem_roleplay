@@ -15,7 +15,8 @@ CREATE TABLE `characters` (
   `pobox` int(11) NOT NULL,
   `jailed` int(11) NOT NULL DEFAULT 0,
   `excluded` int NOT NULL DEFAULT 0,
-  `metadata` varchar(512) COLLATE utf8mb4_bin NOT NULL DEFAULT '''[]'''
+  `metadata` varchar(512) COLLATE utf8mb4_bin NOT NULL DEFAULT '''[]''',
+  `ultimo_login` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 CREATE TABLE `clothes` (
