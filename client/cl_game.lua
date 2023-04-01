@@ -5,7 +5,7 @@ if Config.AnonymousNames then
             Wait(5000)
             for _, player in ipairs(GetActivePlayers()) do
                 local ped = GetPlayerPed(player)
-                SetPedPromptName(ped, "Stranger (" .. tostring(GetPlayerServerId(player))..")")
+                SetPedPromptName(ped, tostring(GetPlayerServerId(player)))
             end
         end
     end)
