@@ -50,7 +50,7 @@ RedEM.GetPlayerCB = function(playerId, cb)
     playerId = tonumber(playerId)
     if RedEM.Players then
         if RedEM.Players[playerId] then
-            Citizen.Trace("^2[redemrp] ^0Deprecated event used (redemrp:getPlayerFromId)\n^2[redemrp] ^0Please update your scripts to the new standard available at\n^2[redemrp] ^0https://sinatra.gitbook.io/redemrp/developer-documentation/server-scripting-api/player-class")
+            -- Citizen.Trace("^2[redemrp] ^0Deprecated event used (redemrp:getPlayerFromId)\n^2[redemrp] ^0Please update your scripts to the new standard available at\n^2[redemrp] ^0https://sinatra.gitbook.io/redemrp/developer-documentation/server-scripting-api/player-class")
             cb(RedEM.Players[playerId])
         else
             cb(nil)
