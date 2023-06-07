@@ -29,6 +29,7 @@ end)
 
 RegisterNetEvent('redem_roleplay:NotifyTop')
 AddEventHandler('redem_roleplay:NotifyTop', function(text, location, duration)
+    TriggerEvent('kfo_serverLogo:hide', duration)
     exports.redem_roleplay:ShowLocationNotification(tostring(text), tostring(location), tonumber(duration))
 end)
 
@@ -44,6 +45,7 @@ end)
 
 RegisterNetEvent('redem_roleplay:ShowTopNotification')
 AddEventHandler('redem_roleplay:ShowTopNotification', function(tittle, subtitle, duration)
+    TriggerEvent('kfo_serverLogo:hide', duration)
     exports.redem_roleplay:ShowTopNotification(tostring(tittle), tostring(subtitle), tonumber(duration))
 end)
 
@@ -61,6 +63,7 @@ end)
 
 RegisterNetEvent('redem_roleplay:ShowBasicTopNotification')
 AddEventHandler('redem_roleplay:ShowBasicTopNotification', function(text, duration)
+    TriggerEvent('kfo_serverLogo:hide', duration)
     exports.redem_roleplay:ShowBasicTopNotification(tostring(text), tonumber(duration))
 end)
 
